@@ -317,6 +317,7 @@ sql/docs
 sql/site
 lib_managed/
 lint-r-report.log
+.bsp/
 log/
 logs/
 project/boot/
