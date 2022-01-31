@@ -26,8 +26,8 @@ def get_response(headers, url, timeout=10, max_retry=3):
 
 import re
 
-def extract_data(steam_links, steam_games_path, headers):
-    for link in steam_links:
+def extract_data(links, games_path, headers):
+    for link in links:
         body = [["Month", "Avg.Players", "Gain", "% Gain", "Peak Players"]]
         response = get_response(headers, link + "#All")
         soup = BeautifulSoup(response, "lxml")
@@ -42,7 +42,7 @@ def extract_data(steam_links, steam_games_path, headers):
 
             body.append(row_text)
 
-        with open(os.path.join(steam_games_path, name), "w", newline='') as file:
+        with open(os.path.join(games_path, name), "w", newline='') as file:
             writer = csv.writer(file, delimiter = ",")
             writer.writerows(body)
 
@@ -64,7 +64,7 @@ def run():
     headers = {'User-Agent': random.choice(user_agents)}
 
     extract_data(steam_links, steam_games_path, headers)
-
+    extract_data(twitch_links, twitch_games_path, headers)
 
 
 if __name__ == '__main__':
