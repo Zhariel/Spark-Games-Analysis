@@ -62,7 +62,7 @@ Month	Average	Gain	% Gain	Peak
 03/2017	132	-326	-71.2%	1.5K
 02/2017	458	+153	+50.2%	3.6K
 01/2017	305	-77	-20.2%	20.3K
-12/2016	382	-	-	26.3K
+12/2016	382	-	-	26.3K&
 CONCURRENT STREAMS
 Month	Average	Gain	% Gain	Peak
 02/2022	129	-11	-7.9%	216
@@ -193,3 +193,4 @@ Month	Value	Gain	% Gain
 02/2017	305K	+81.9K	+36.7%
 01/2017	223K	-54.1K	-19.5%
 12/2016	277K	-	-
+.

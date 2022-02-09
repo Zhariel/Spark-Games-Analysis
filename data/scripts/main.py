@@ -3,6 +3,8 @@ import csv
 import random
 import pandas as pd
 import requests
+import re
+import csv
 from lxml import html
 from bs4 import BeautifulSoup
 
@@ -23,8 +25,6 @@ def get_response(headers, url, timeout=10, max_retry=3):
         except Exception as e:
             lastException = e
     raise lastException
-
-import re
 
 def extract_data(links, games_path, headers):
     for link in links:
@@ -49,7 +49,7 @@ def extract_data(links, games_path, headers):
         print(name)
 
 
-def run():
+def extract_steam_data():
     agents = os.path.join("agents", "agents.txt")
     steam = os.path.join(os.getcwd(), "..", "steam.txt")
     twitch = os.path.join(os.getcwd(), "..", "twitch.txt")
@@ -66,6 +66,45 @@ def run():
     extract_data(steam_links, steam_games_path, headers)
     extract_data(twitch_links, twitch_games_path, headers)
 
+def clean_data():
+    path = os.path.join(os.getcwd(), "..", "twitch_games")
+    for dirname, _, filenames in os.walk(path):
+        for file in filenames:
+            game = os.path.join(dirname, file)
+            # print(game)
+
+            with open(game) as f:
+                data = [[], [], []]
+                content = re.split('\n' ,f.read())
+
+                index = -1
+                for line in content:
+                    if line in ['CONCURRENT VIEWERS', 'CONCURRENT STREAMS', 'HOURS WATCHED']:
+                        index += 1
+                        continue
+                    l = re.split(" ", line)
+                    l = re.split('\t', line)
+                    data[index].append(l)
+                    # print(l)
+
+                a = ["viewers_", "streams_", "watched_"]
+                for j in range(len(data)):
+                    for i in range(len(data[j][0])):
+                        data[j][0][i] = a[j] + data[j][0][i]
+
+                final = []
+                for i in range(len(data[0])):
+                    final.append(','.join(data[0][i] + data[1][i] + data[2][i]))
+
+                for f in final:
+                    print(f)
+
+                newgame = game[:len(game)-4] + "2" + '.csv'
+                with open(newgame, "w") as csvfile:
+                    for f in final:
+                        csvfile.write(f + '\n')
+
 
 if __name__ == '__main__':
-    run()
+    # extract_steam_data()
+    clean_data()
