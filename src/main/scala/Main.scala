@@ -14,6 +14,9 @@ object Main extends App {
   val ddf = steam.get_df_steam_to_ds(frame)
 
   steam.view_table(frame).show()
+  steam.more_players(frame).show()
+  steam.ratio_viewer(frame, frame2).show()
+  steam.nouveaux_streams(frame2).show()
 
 
 //  print(frame.show(3))

@@ -35,24 +35,33 @@ abstract class GameData() {
 
   def view_table(df: DataFrame) : DataFrame = {
     df.createTempView("table_steam")
-    spark.sql("SELECT * FROM table_steam LIMIT 20")
+    val dff = spark.sql("SELECT * FROM table_steam LIMIT 20")
+    spark.catalog.dropTempView("table_steam")
+    dff
   }
 
   def ratio_viewer(df_steam: DataFrame, df_twitch: DataFrame): DataFrame  = {
     df_steam.createTempView("steam_table")
     df_twitch.createTempView("twitch_table")
-    spark.sql("SELECT Month, round((avg_players/viewers_average), 2) FROM steam_table, twitch_table")
+    val df = spark.sql("SELECT month, (s.avg_players/t.viewers_average) FROM steam_table s, twitch_table t")
+    spark.catalog.dropTempView("steam_table")
+    spark.catalog.dropTempView("twitch_table")
+    df
   }
 
   def more_players (df_steam: DataFrame): DataFrame={
-    //df_steam.withColumn("avg_players", df_steam["avg_players"].cast(DoubleType()).alias("avg_players"))
+    spark.catalog.dropTempView("steam_table")
     df_steam.createTempView("steam_table")
-    spark.sql("Select  month, CAST(avg_players, float) from steam_table order by CAST(avg_players, float) LIMIT 1")
+    val df = spark.sql("Select  month, avg_players from steam_table order by avg_players LIMIT 1")
+    spark.catalog.dropTempView("steam_table")
+    df
   }
 
   def nouveaux_streams(df_twitch: DataFrame): DataFrame = {
     df_twitch.createTempView("twitch_table")
-    spark.sql("SELECT SUM(viewers_gain) FROM twitch_table WHERE ((month LIKE '%2019%') OR (month LIKE '%2020%') OR (month LIKE '%2021%'))")
+    val df = spark.sql("SELECT SUM(viewers_gain) FROM twitch_table WHERE ((viewers_month LIKE '%2019%') OR (viewers_month LIKE '%2020%') OR (viewers_month LIKE '%2021%') OR (viewers_month LIKE '%Last%'))")
+    spark.catalog.dropTempView("twitch_table")
+    df
   }
 
   def clean_header(frame: DataFrame): DataFrame ={
