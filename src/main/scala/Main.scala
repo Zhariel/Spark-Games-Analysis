@@ -1,6 +1,4 @@
-import org.apache.spark.sql.{DataFrame, SparkSession}
-import org.apache.spark.sql.functions.col
-import games.{DataUtils, GameData, SteamData, TwitchData, Transformations}
+import games.{SteamData, TwitchData, Transformations}
 
 object Main extends App {
 
@@ -13,7 +11,7 @@ object Main extends App {
   println(steam_frame)
   println(twitch_frame)
 
-  val transformations = new Transformations()
+  val transformations = new Transformations("steam_table", "twitch_table")
 
   //Voir notre dataframe
   transformations.view_table(steam_frame).show()

@@ -1,5 +1,4 @@
 package games
-import case_classes.SteamGame
 import org.apache.spark.sql.DataFrame
 
 import java.nio.file.Paths

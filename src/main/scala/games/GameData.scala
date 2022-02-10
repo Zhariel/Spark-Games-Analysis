@@ -1,9 +1,5 @@
 package games
-import games.DataUtils
 import org.apache.spark.sql.{DataFrame, SparkSession}
-
-import java.io.File
-import java.nio.file.Paths
 
 abstract class GameData() {
   val utils = new DataUtils

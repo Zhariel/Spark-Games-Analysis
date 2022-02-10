@@ -1,5 +1,4 @@
 package games
-import case_classes.TwitchWatch
 import org.apache.spark.sql.DataFrame
 
 import java.nio.file.Paths
