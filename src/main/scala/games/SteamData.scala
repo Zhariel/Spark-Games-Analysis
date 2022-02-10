@@ -1,7 +1,6 @@
 package games
 import case_classes.SteamGame
 import org.apache.spark.sql.DataFrame
-import org.apache.spark.sql.functions.{col, split, when}
 
 import java.nio.file.Paths
 import scala.language.postfixOps
