@@ -11,7 +11,7 @@ object Main extends App {
   val t = twitch.extract_dataframes_in_folder()
 
   val frame = steam.clean_dataframe(s.head)
-  val frame2 = steam.clean_dataframe(t.head)
+  val frame2 = twitch.clean_dataframe(t.head)
 
   println(frame)
   println(frame2)
