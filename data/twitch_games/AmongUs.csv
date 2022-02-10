@@ -1,4 +1,4 @@
-viewers_Month,viewers_Average,viewers_Gain,viewers_% Gain,viewers_Peak,streams_Month,streams_Average,streams_Gain,streams_% Gain,streams_Peak,watched_Month,watched_Value,watched_Gain,watched_% Gain
+Month,viewers_Average,viewers_Gain,viewers_Gain_pourcentage,viewers_Peak,streams_Month,streams_Average,streams_Gain,streams_Pourcentage_Gain,streams_Peak,watched_Value,watched_Gain,watched_Pourcentage_Gain
 02/2022,5.8K,-1,420,-19.7%,71.9K,02/2022,177,-39,-18.1%,479,02/2022,969K,-4.38M,-81.9%
 01/2022,7.2K,-528,-6.8%,147K,01/2022,216,+3,+1.4%,611,01/2022,5.35M,-388K,-6.8%
 12/2021,7.7K,-4,079,-34.6%,295K,12/2021,213,+44,+26%,647,12/2021,5.74M,-2.76M,-32.4%
