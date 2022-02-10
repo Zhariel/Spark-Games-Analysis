@@ -11,6 +11,8 @@ class DataUtils {
     .master("local[*]")
     .getOrCreate()
 
+    spark.sparkContext.setLogLevel("ERROR")
+
   def getListOfFiles(dir: String):List[File] = {
     val d = new File(dir)
     if (d.exists && d.isDirectory) {
