@@ -64,6 +64,14 @@ abstract class GameData() {
     df
   }
 
+  def plus_gros_peak(df_steam: DataFrame, df_twitch: DataFrame) : DataFrame =  {
+    df_steam.createTempView("steam_table")
+    df_twitch.createTempView("twitch_table")
+    val df = spark.sql("SELECT t.viewers_peak, s.peak_players FROM steam_table s, twitch_table t WHERE ((s.month LIKE '%January 2022%') AND (t.viewers_month LIKE '%01/2022%'))")
+    spark.catalog.dropTempView("steam_table")
+    spark.catalog.dropTempView("twitch_table")
+    df
+  }
   def clean_header(frame: DataFrame): DataFrame ={
     val frame2 = frame
       .columns
