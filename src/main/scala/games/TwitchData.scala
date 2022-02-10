@@ -1,5 +1,9 @@
 package games
+import case_classes.TwitchWatch
 
-class TwitchData(name: String) extends GameData(name) {
+import java.nio.file.Paths
+
+class TwitchData extends GameData {
+  override val path: String = Paths.get("data", "twitch_games").toString
 
 }
