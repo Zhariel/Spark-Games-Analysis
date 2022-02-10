@@ -1,14 +1,12 @@
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.apache.spark.sql.functions.col
+import games.{DataUtils, GameData}
 
 object Main extends App {
-  val spark = SparkSession
-    .builder()
-    .appName(name = "Playtime Viewership Evaluation")
-    .master("local[*]")
-    .getOrCreate()
 
-  spark.sparkContext.setLogLevel("ERROR")
+  val u = new GameData("prout")
 
-  print("a")
+  val d = u.extract_dataframes_in_folder("")
+  val frame: Option[DataFrame] = d.get("AmongUs")
+//  print(frame.show(3))
 }
