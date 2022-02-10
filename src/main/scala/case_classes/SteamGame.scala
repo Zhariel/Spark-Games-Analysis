@@ -1,7 +1,7 @@
 package case_classes
 
-case class SteamGame(Month: String,
-                     Avg_Players: String,
-                     Gain: String,
-                     pourcentage_gain: String,
+case class SteamGame(month: String,
+                     avg_players: String,
+                     gain: String,
+                     percent_gain: String,
                      peak_players: String)

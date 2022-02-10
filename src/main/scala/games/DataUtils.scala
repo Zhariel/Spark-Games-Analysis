@@ -6,13 +6,13 @@ import java.io.File
 import java.nio.file.Paths
 
 class DataUtils {
-   val spark = SparkSession
+  val spark: SparkSession = SparkSession
     .builder()
     .appName(name = "Playtime Viewership Evaluation")
     .master("local[*]")
     .getOrCreate()
 
-    spark.sparkContext.setLogLevel("ERROR")
+  spark.sparkContext.setLogLevel("ERROR")
 
   def getListOfFiles(dir: String):List[File] = {
     val d = new File(dir)

@@ -1,14 +1,14 @@
 package case_classes
 
-case class TwitchWatch(Month: String,
-                       viewers_Average: String,
-                       viewers_Gain: String,
+case class TwitchWatch(month: String,
+                       viewers_average: String,
+                       viewers_gain: String,
                        viewers_pourcentage_Gain: String,
-                       viewers_Peak: String,
-                       streams_Average: String,
-                       streams_Gain: String,
-                       streams_Pourcentage_Gain: String,
-                       streams_Peak: String,
-                       watched_Value: String,
-                       watched_Gain: String,
-                       watched_Pourcentage_Gain: String)
+                       viewers_peak: String,
+                       streams_average: String,
+                       streams_gain: String,
+                       streams_pourcentage_Gain: String,
+                       streams_peak: String,
+                       watched_value: String,
+                       watched_gain: String,
+                       watched_pourcentage_Gain: String)
