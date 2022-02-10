@@ -25,13 +25,7 @@ class SteamData extends GameData {
     "December" -> "12",
   )
 
-  override def clean_content(frame: DataFrame): DataFrame ={
-    val first_row = frame.()
-    val f = frame
-      .withColumn("month", col("month").substr(col("month") - 4, col("month") - 1))
-      .filter(row => row != first_row)
-    f.show(3)
-    f
+  override def clean_content(frame: DataFrame): DataFrame = {
+    frame
   }
-
 }

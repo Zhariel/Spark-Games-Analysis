@@ -7,14 +7,16 @@ object Main extends App {
   val steam = new SteamData()
   val twitch = new TwitchData()
 
-  val s = steam.extract_dataframes_in_folder()
-  val t = twitch.extract_dataframes_in_folder()
+  val steam_data = steam.extract_dataframes_in_folder()
+  val twitch_data = twitch.extract_dataframes_in_folder()
 
-  val frame = steam.clean_dataframe(s.head)
-  val frame2 = twitch.clean_dataframe(t.head)
+  val s = steam.clean_dataframe(steam_data.head)
+  val t = twitch.clean_dataframe(twitch_data.head)
 
-  println(frame)
-  println(frame2)
+  println(s)
+  println(t)
 
-//  print(frame.show(3))
+
+
+
 }
