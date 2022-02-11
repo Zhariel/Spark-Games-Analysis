@@ -1,2 +1,2 @@
 # SparkProject
-Twitch vs Steam analysis
+Twitch viewership vs Steam playership analysis
