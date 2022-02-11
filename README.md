@@ -1,2 +1,2 @@
 # SparkProject
-Analysing game sales on Steam with Twitch viewership data.
+Twitch vs Steam analysis
